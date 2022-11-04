@@ -1,11 +1,11 @@
 {
-    "name": "asantibanez/laravel-blade-sortable",
+    "name": "maksuco/laravel-blade-sortable",
     "description": "Custom Blade components to add sortable/drag-and-drop HTML elements in your apps",
     "keywords": [
-        "asantibanez",
+        "maksuco",
         "laravel-blade-sortable"
     ],
-    "homepage": "https://github.com/asantibanez/laravel-blade-sortable",
+    "homepage": "https://github.com/maksuco/laravel-blade-sortable",
     "license": "MIT",
     "type": "library",
     "authors": [
