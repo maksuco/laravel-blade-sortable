@@ -16,7 +16,7 @@
 You can install the package via composer:
 
 ```bash
-composer require asantibanez/laravel-blade-sortable
+composer require maksuco/laravel-blade-sortable
 ```
 
 After the package is installed, make sure to add `laravel-blade-sortable::scripts`

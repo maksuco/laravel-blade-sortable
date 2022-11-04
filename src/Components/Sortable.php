@@ -71,7 +71,7 @@ class Sortable extends Component
             ->push($hasWireOnSortOrderChangeDirective ? "wireOnSortOrderChange = '$wireOnSortOrderChange'" : null)
             ->push($this->allowSort ? 'allowSort = true' : 'allowSort = false')
             ->push($this->allowDrop ? 'allowDrop = true' : 'allowDrop = false')
-            ->push($this->pull ? 'pull = '.$this->pull : 'pull = false')
+            ->push($this->pull ? "pull = '{$this->pull}'" : 'pull = false')
             ->push('init()')
             ->filter(function ($line) {
                 return $line !== null;
