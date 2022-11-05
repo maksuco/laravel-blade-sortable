@@ -60,7 +60,6 @@ class Sortable extends Component
         $hasDragHandle = $this->dragHandle !== null;
 
         $hasGroup = $this->group !== null;
-        ray('is clone', $this->clone);
 
         if($this->clone){
             $this->allowDrop = false;

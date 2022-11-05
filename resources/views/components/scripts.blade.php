@@ -34,6 +34,8 @@
                     filter: '.noDragging',
                     forceFallback: true,
                     onSort: evt => {
+                console.log(evt, evt.item.id);
+
                         const previousSortOrder = [...this.sortOrder]
                         this.sortOrder = this.computeSortOrderFromChildren()
                         if (!this.$wire) {
@@ -44,6 +46,7 @@
                         const to = evt?.to?.dataset?.name
                         const oldIndex = evt?.oldIndex
                         const newIndex = evt?.newIndex
+                        const itemId = evt.item.id ?? null
 
                         this.$wire.call(
                             this.wireOnSortOrderChange,
@@ -54,6 +57,7 @@
                             to,
                             oldIndex,
                             newIndex,
+                            itemId
                         )
                     },
                 });

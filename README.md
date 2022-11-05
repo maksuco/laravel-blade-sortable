@@ -184,7 +184,7 @@ current order.
 Extra info is passed along too, so you can check extra data when processing the sort order
 
 ```php
-public function handleOnSortOrderChanged($sortOrder, $previousSortOrder, $name, $from, $to, $oldIndex, $newIndex)
+public function handleOnSortOrderChanged($sortOrder, $previousSortOrder, $name, $from, $to, $oldIndex, $newIndex, $itemId)
 {
     // $sortOrder = new keys order
     // $previousSortOrder = keys previous order
@@ -193,6 +193,7 @@ public function handleOnSortOrderChanged($sortOrder, $previousSortOrder, $name, 
     // $to = name of drop target to where the dragged/sorted item was placed
     // $oldIndex = loop key from where the dragged/sorted item came from
     // $newIndex = loop key to where the dragged/sorted item was placed
+    // $itemId = present if dragging item has id tag
 }
 ```
 
