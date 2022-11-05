@@ -78,7 +78,7 @@ class Sortable extends Component
             ->push($this->allowSort ? 'allowSort = true' : 'allowSort = false')
             ->push($this->allowDrop ? 'allowDrop = true' : 'allowDrop = false')
             ->push($this->clone ? "pull = 'clone'" : NULL)
-            ->push('init()')
+            ->push('start()')
             ->filter(function ($line) {
                 return $line !== null;
             })

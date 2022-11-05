@@ -14,7 +14,7 @@
             wireComponent: null,
             wireOnSortOrderChange: null,
 
-            init() {
+            start() {
                 this.sortOrder = this.computeSortOrderFromChildren()
 
                 // var pull = this.clone ? "'clone'" : true;
@@ -34,7 +34,6 @@
                     filter: '.noDragging',
                     forceFallback: true,
                     onSort: evt => {
-                        console.log(evt);
                         const previousSortOrder = [...this.sortOrder]
                         this.sortOrder = this.computeSortOrderFromChildren()
                         if (!this.$wire) {
