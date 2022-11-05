@@ -241,7 +241,7 @@ Use `:allow-sort=true|false` and `:allow-drop=true|false` to `x-laravel-blade-so
 to enable/disable sorting and/or drop of elements.
 Both defaults to `true`.
 
-Use :clone="true" to enable the cloning of elements and set the id="xx" to get the element identification. if cloning is set, then drop and sort are off automatically.
+Use `:clone="true"` to enable the cloning of elements and set the `id="xx"` to get the element identification. if cloning is set, then drop and sort are "false" automatically.
 
 ```blade
 <x-laravel-blade-sortable::sortable
@@ -256,11 +256,6 @@ Use :clone="true" to enable the cloning of elements and set the id="xx" to get t
 
 ![disable-sort-drop](https://github.com/asantibanez/laravel-blade-sortable/raw/master/examples/disable-sort-drop.gif)
 
-### Testing
-
-``` bash
-composer test
-```
 
 ### Changelog
 
@@ -270,9 +265,6 @@ Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recen
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-### Security
-
-If you discover any security related issues, please email santibanez.andres@gmail.com instead of using the issue tracker.
 
 ## Credits
 
