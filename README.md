@@ -24,7 +24,7 @@ components next to your other scripts.
 
 ```html
 <x-laravel-blade-sortable::scripts/>
-<script src="/js/app.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 ```
 
 ## Requirements
@@ -240,14 +240,13 @@ Just add a `group` string prop to a `laravel-blade-sortable::sortable` component
 
 ![drag-drop](https://github.com/asantibanez/laravel-blade-sortable/raw/master/examples/drag-drop.gif)
 
-### Enable/Disable sorting and/or drop
+### Enable/Disable sorting and/or drop or Cloning
 
 Use `:allow-sort=true|false` and `:allow-drop=true|false` to `x-laravel-blade-sortable::sortable` components
 to enable/disable sorting and/or drop of elements.
-
-Use `:clone="true" to enable the cloning of elements and set the id="xx" to get the element identification.
-
 Both defaults to `true`.
+
+Use :clone="true" to enable the cloning of elements and set the id="xx" to get the element identification. if cloning is set, then drop and sort are off automatically.
 
 ```blade
 <x-laravel-blade-sortable::sortable
