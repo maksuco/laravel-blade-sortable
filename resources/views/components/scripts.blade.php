@@ -17,6 +17,10 @@
             init() {
                 this.sortOrder = this.computeSortOrderFromChildren()
 
+                // var pull = this.clone ? "'clone'" : true;
+                // var revertClone = this.clone ? true : false;
+                console.log(this.pull, this.group,this.allowDrop,this.allowSort);
+
                 window.Sortable.create(this.$refs.root, {
                     handle: this.dragHandle,
                     animation: this.animation,
@@ -24,19 +28,23 @@
                     group: {
                         name: this.group,
                         put: this.allowDrop,
-                        pull: this.pull,
+                        pull: this.pull
                     },
                     sort: this.allowSort,
+                    filter: '.noDragging',
+                    forceFallback: true,
                     onSort: evt => {
+                        console.log(evt);
                         const previousSortOrder = [...this.sortOrder]
                         this.sortOrder = this.computeSortOrderFromChildren()
-
                         if (!this.$wire) {
-                            return
+                            return;
                         }
 
                         const from = evt?.from?.dataset?.name
                         const to = evt?.to?.dataset?.name
+                        const oldIndex = evt?.oldIndex
+                        const newIndex = evt?.newIndex
 
                         this.$wire.call(
                             this.wireOnSortOrderChange,
@@ -45,6 +53,8 @@
                             this.name,
                             from,
                             to,
+                            oldIndex,
+                            newIndex,
                         )
                     },
                 });

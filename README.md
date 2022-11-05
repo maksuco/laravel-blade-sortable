@@ -184,13 +184,15 @@ current order.
 Extra info is passed along too, so you can check extra data when processing the sort order
 
 ```php
-public function handleOnSortOrderChanged($sortOrder, $previousSortOrder, $name, $from, $to)
+public function handleOnSortOrderChanged($sortOrder, $previousSortOrder, $name, $from, $to, $oldIndex, $newIndex)
 {
     // $sortOrder = new keys order
     // $previousSortOrder = keys previous order
     // $name = drop target name
     // $from = name of drop target from where the dragged/sorted item came from
     // $to = name of drop target to where the dragged/sorted item was placed
+    // $oldIndex = loop key from where the dragged/sorted item came from
+    // $newIndex = loop key to where the dragged/sorted item was placed
 }
 ```
 
@@ -249,6 +251,7 @@ Both defaults to `true`.
     group="people"
     :allow-sort="false"
     :allow-drop="false"
+    :clone="false"
 >
     {{-- Items here --}}
 </x-laravel-blade-sortable::sortable>

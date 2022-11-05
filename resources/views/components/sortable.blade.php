@@ -9,9 +9,7 @@
         @include('laravel-blade-sortable::includes.hidden-inputs')
         {{ $slot }}
     </{{ $as ?? 'div' }}>
-@endif
-
-@if($component)
+@elseif($component)
     <x-dynamic-component
         :component="$component"
         {{ $attributes }}
