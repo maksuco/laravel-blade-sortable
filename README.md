@@ -245,6 +245,8 @@ Just add a `group` string prop to a `laravel-blade-sortable::sortable` component
 Use `:allow-sort=true|false` and `:allow-drop=true|false` to `x-laravel-blade-sortable::sortable` components
 to enable/disable sorting and/or drop of elements.
 
+Use `:clone="true" to enable the cloning of elements and set the id="xx" to get the element identification.
+
 Both defaults to `true`.
 
 ```blade
@@ -252,7 +254,7 @@ Both defaults to `true`.
     group="people"
     :allow-sort="false"
     :allow-drop="false"
-    :clone="false"
+    :clone="true"
 >
     {{-- Items here --}}
 </x-laravel-blade-sortable::sortable>
