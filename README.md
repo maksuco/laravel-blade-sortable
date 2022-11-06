@@ -1,5 +1,5 @@
 # Laravel Blade Sortable
-This is a fork from "https://github.com/asantibanez/laravel-blade-sortable-demo" but updated for alpine V3 and new functions, it will also support Livewire V3
+This is a fork from "https://github.com/asantibanez/laravel-blade-sortable-demo" but updated for alpine V3 and new functions like clone and swap, it will also support Livewire V3
 ## Demo
 
 [Repo](https://github.com/asantibanez/laravel-blade-sortable-demo)
