@@ -3,28 +3,28 @@
         return {
             name: '',
             sortOrder: [],
-            animation: 150,
+            animation: 200,
             ghostClass: '',
             dragHandle: null,
             group: null,
             allowSort: true,
             allowDrop: true,
             pull: true,
+            swap: false,
 
             wireComponent: null,
             wireOnSortOrderChange: null,
 
             start() {
                 this.sortOrder = this.computeSortOrderFromChildren()
-
-                // var pull = this.clone ? "'clone'" : true;
-                // var revertClone = this.clone ? true : false;
-                console.log(this.pull, this.group,this.allowDrop,this.allowSort);
+                var swap = (this.swap != false)? true : false;
+                console.log(swap,this.swap);
 
                 window.Sortable.create(this.$refs.root, {
                     handle: this.dragHandle,
                     animation: this.animation,
                     ghostClass: this.ghostClass,
+                    delay: 100,
                     group: {
                         name: this.group,
                         put: this.allowDrop,
@@ -33,8 +33,9 @@
                     sort: this.allowSort,
                     filter: '.noDragging',
                     forceFallback: true,
+                    swap: swap,
+                    swapClass: this.swap,
                     onSort: evt => {
-                console.log(evt, evt.item.id);
 
                         const previousSortOrder = [...this.sortOrder]
                         this.sortOrder = this.computeSortOrderFromChildren()

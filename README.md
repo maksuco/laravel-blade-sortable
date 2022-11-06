@@ -186,8 +186,8 @@ public function handleOnSortOrderChanged($sortOrder, $previousSortOrder, $name, 
     // $name = drop target name
     // $from = name of drop target from where the dragged/sorted item came from
     // $to = name of drop target to where the dragged/sorted item was placed
-    // $oldIndex = loop key from where the dragged/sorted item came from
-    // $newIndex = loop key to where the dragged/sorted item was placed
+    // $oldIndex = loop index from where the dragged/sorted item came from
+    // $newIndex = loop index to where the dragged/sorted item was placed
     // $itemId = present if dragging item has id tag
 }
 ```
@@ -235,13 +235,15 @@ Just add a `group` string prop to a `laravel-blade-sortable::sortable` component
 
 ![drag-drop](https://github.com/asantibanez/laravel-blade-sortable/raw/master/examples/drag-drop.gif)
 
-### Enable/Disable sorting and/or drop or Cloning
+### Enable/Disable sorting and/or drop or Cloning and swaping
 
 Use `:allow-sort=true|false` and `:allow-drop=true|false` to `x-laravel-blade-sortable::sortable` components
 to enable/disable sorting and/or drop of elements.
 Both defaults to `true`.
 
-Use `:clone="true"` to enable the cloning of elements and set the `id="xx"` to get the element identification. if cloning is set, then drop and sort are "false" automatically.
+Use `:clone="true"` to enable the cloning of elements and set the `id="xx"` to get the element identification. if cloning is set, then drop and sort are "false" automatically. you can use id="" to identify the conning element
+
+Use `:swap="'border-red'"` to enable the swaping of elements, the value is the class that is applied
 
 ```blade
 <x-laravel-blade-sortable::sortable
@@ -249,6 +251,7 @@ Use `:clone="true"` to enable the cloning of elements and set the `id="xx"` to g
     :allow-sort="false"
     :allow-drop="false"
     :clone="true"
+    :swap="'bg-green'"
 >
     {{-- Items here --}}
 </x-laravel-blade-sortable::sortable>
