@@ -1,9 +1,10 @@
 <script>
     const laravelBladeSortable = () => {
         return {
+            parent: false,
             name: '',
             sortOrder: [],
-            animation: 200,
+            animation: 500,
             ghostClass: '',
             dragHandle: null,
             group: null,
@@ -14,17 +15,19 @@
 
             wireComponent: null,
             wireOnSortOrderChange: null,
+            duplicate_call: false,
 
             start() {
+                console.log('initial',this.parent);
+                this.parent = (this.parent)? document.getElementById(this.parent) : null;
                 this.sortOrder = this.computeSortOrderFromChildren()
                 var swap = (this.swap != false)? true : false;
-                console.log(swap,this.swap);
 
                 window.Sortable.create(this.$refs.root, {
                     handle: this.dragHandle,
                     animation: this.animation,
                     ghostClass: this.ghostClass,
-                    delay: 100,
+                    delay: 50,
                     group: {
                         name: this.group,
                         put: this.allowDrop,
@@ -32,7 +35,9 @@
                     },
                     sort: this.allowSort,
                     filter: '.noDragging',
-                    forceFallback: true,
+                    //forceFallback: true,
+		            fallbackOnBody: true,
+		            swapThreshold: 0.65,
                     swap: swap,
                     swapClass: this.swap,
                     onSort: evt => {
@@ -48,6 +53,7 @@
                         const oldIndex = evt?.oldIndex
                         const newIndex = evt?.newIndex
                         const itemId = evt.item.id ?? null
+                        const toId = evt?.to?.id
 
                         this.$wire.call(
                             this.wireOnSortOrderChange,
@@ -58,9 +64,18 @@
                             to,
                             oldIndex,
                             newIndex,
-                            itemId
+                            itemId,
+                            toId
                         )
                     },
+                    onStart: function (evt) {
+                        console.log(evt);
+                        console.log(this.parent);
+                        if(this.parent) this.parent.classList.add("sortable-parent");
+                    },
+                    onEnd: function () {
+                        if(this.parent) this.parent.classList.remove("sortable-parent");
+                    }
                 });
             },
 

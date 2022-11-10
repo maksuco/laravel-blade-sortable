@@ -1,5 +1,5 @@
 # Laravel Blade Sortable
-This is a fork from "https://github.com/asantibanez/laravel-blade-sortable-demo" but updated for alpine V3 and new functions like clone and swap, it will also support Livewire V3
+This is a fork from "https://github.com/asantibanez/laravel-blade-sortable-demo" but updated for alpine V3 and new functions like clone, swap and extra event data (oldIndex,newIndex,itemId,toId), it will also support Livewire V3
 ## Demo
 
 [Repo](https://github.com/asantibanez/laravel-blade-sortable-demo)
@@ -179,7 +179,7 @@ current order.
 Extra info is passed along too, so you can check extra data when processing the sort order
 
 ```php
-public function handleOnSortOrderChanged($sortOrder, $previousSortOrder, $name, $from, $to, $oldIndex, $newIndex, $itemId)
+public function handleOnSortOrderChanged($sortOrder, $previousSortOrder, $name, $from, $to, $oldIndex, $newIndex, $itemId, $toId)
 {
     // $sortOrder = new keys order
     // $previousSortOrder = keys previous order
@@ -189,22 +189,25 @@ public function handleOnSortOrderChanged($sortOrder, $previousSortOrder, $name, 
     // $oldIndex = loop index from where the dragged/sorted item came from
     // $newIndex = loop index to where the dragged/sorted item was placed
     // $itemId = present if dragging item has id tag
+    // $toId = usable when dragging to a new group
 }
 ```
 
-### Customization
+### CSS Customization
 
 To support some advanced features of SortableJs, it is possible to pass the following
 props to a `laravel-blade-sortable::sortable` component:
 - `animation`: milliseconds it takes to run the sorting animation. `150` is the default value.
 - `ghost-class`: class added to the dragged object during sort. Default is `null`. Must be 1 class only.
 - `drag-handle`: class name that will be used as the handle for dragging. Only the DOM element that has that class can enable sorting.
+- `parent`: id name of the parent, that will add the same name class when a dragging has started.
 
 ```blade
 <x-laravel-blade-sortable::sortable
     animation="1000"
     ghost-class="opacity-25"
     drag-handle="drag-handle"
+    parent="'someID'"
 >
     {{-- Items here --}}
 </x-laravel-blade-sortable::sortable>
@@ -241,7 +244,7 @@ Use `:allow-sort=true|false` and `:allow-drop=true|false` to `x-laravel-blade-so
 to enable/disable sorting and/or drop of elements.
 Both defaults to `true`.
 
-Use `:clone="true"` to enable the cloning of elements and set the `id="xx"` to get the element identification. if cloning is set, then drop and sort are "false" automatically. you can use id="" to identify the conning element
+Use `:clone="true"` to enable the cloning of elements and set the `id="xx"` to get the element identification. if cloning is set, then drop and sort become "false" automatically. you can use id="" to identify the conning element
 
 Use `:swap="'border-red'"` to enable the swaping of elements, the value is the class that is applied
 
