@@ -71,6 +71,7 @@ class Sortable extends Component
             $this->allowDrop = false;
             $this->allowSort = false;
         }
+        ray($this->animation,$this->parent);
 
         return collect()
             ->push("name = '{$this->name}'")
@@ -84,7 +85,7 @@ class Sortable extends Component
             ->push($this->allowDrop ? 'allowDrop = true' : 'allowDrop = false')
             ->push($this->clone ? "pull = 'clone'" : NULL)
             ->push($this->swap ? "swap = '{$this->swap}'" : NULL)
-            ->push($this->parent ? "parentID = '{$this->parent}'" : NULL)
+            ->push($this->parent ? "parent = '{$this->parent}'" : NULL)
             ->push('start()')
             ->filter(function ($line) {
                 return $line !== null;
