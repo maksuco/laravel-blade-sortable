@@ -68,7 +68,6 @@ class Sortable extends Component
             $this->allowDrop = false;
             $this->allowSort = false;
         }
-        ray($this->animation,$this->parent);
 
         return collect()
             ->push("name = '{$this->name}'")

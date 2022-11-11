@@ -17,7 +17,7 @@
             duplicate_call: false,
 
             start() {
-                var parent = document.getElementById('sortable-parent');
+                var parent = document.getElementById('sortableParent');
                 console.log(this.parent);
                 this.sortOrder = this.computeSortOrderFromChildren()
                 var swap = (this.swap != false)? true : false;
