@@ -28,7 +28,6 @@ class Sortable extends Component
 
     public $clone;
     public $swap;
-    public $parent;
 
     public function __construct($as = null,
                                 $component = null,
@@ -40,8 +39,7 @@ class Sortable extends Component
                                 $allowSort = true,
                                 $allowDrop = true,
                                 $clone = null,
-                                $swap = null,
-                                $parent = null)
+                                $swap = null)
     {
         $this->as = $as;
         $this->component = $component;
@@ -54,7 +52,6 @@ class Sortable extends Component
         $this->allowSort = $allowSort;
         $this->clone = $clone;
         $this->swap = $swap;
-        $this->parent = $parent;
     }
 
     public function xInit()
@@ -85,7 +82,6 @@ class Sortable extends Component
             ->push($this->allowDrop ? 'allowDrop = true' : 'allowDrop = false')
             ->push($this->clone ? "pull = 'clone'" : NULL)
             ->push($this->swap ? "swap = '{$this->swap}'" : NULL)
-            ->push($this->parent ? "parent = '{$this->parent}'" : NULL)
             ->push('start()')
             ->filter(function ($line) {
                 return $line !== null;

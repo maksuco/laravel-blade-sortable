@@ -1,7 +1,6 @@
 <script>
     const laravelBladeSortable = () => {
         return {
-            parent: false,
             name: '',
             sortOrder: [],
             animation: 500,
@@ -18,8 +17,8 @@
             duplicate_call: false,
 
             start() {
-                console.log('initial',this.parent);
-                this.parent = (this.parent)? document.getElementById(this.parent) : null;
+                var parent = document.getElementById('sortable-parent');
+                console.log(this.parent);
                 this.sortOrder = this.computeSortOrderFromChildren()
                 var swap = (this.swap != false)? true : false;
 
@@ -68,13 +67,12 @@
                             toId
                         )
                     },
-                    onStart: function (evt) {
-                        console.log(evt);
-                        console.log(this.parent);
-                        if(this.parent) this.parent.classList.add("sortable-parent");
+                    onStart: function () {
+                        console.log(parent);
+                        if(parent) {parent.classList.add("sortable-parent")};
                     },
                     onEnd: function () {
-                        if(this.parent) this.parent.classList.remove("sortable-parent");
+                        if(parent) {parent.classList.remove("sortable-parent")};
                     }
                 });
             },
