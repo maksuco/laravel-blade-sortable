@@ -201,6 +201,7 @@ props to a `laravel-blade-sortable::sortable` component:
 - `ghost-class`: class added to the dragged object during sort. Default is `null`. Must be 1 class only.
 - `drag-handle`: class name that will be used as the handle for dragging. Only the DOM element that has that class can enable sorting.
 - `parent`: id name of the parent, that will add the same name class when a dragging has started.
+parent is not working it targets automatically id="sortable-parent" when dragging starts it adds/removes class "sortable-parent"
 
 ```blade
 <x-laravel-blade-sortable::sortable
