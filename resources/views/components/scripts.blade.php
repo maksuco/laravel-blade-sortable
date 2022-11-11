@@ -68,7 +68,6 @@
                         )
                     },
                     onStart: function () {
-                        console.log(parent);
                         if(parent) {parent.classList.add("sortable-parent")};
                     },
                     onEnd: function () {
