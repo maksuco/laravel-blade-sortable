@@ -208,7 +208,6 @@ parent is not working it targets automatically id="sortableParent" when dragging
     animation="1000"
     ghost-class="opacity-25"
     drag-handle="drag-handle"
-    parent="'someID'"
 >
     {{-- Items here --}}
 </x-laravel-blade-sortable::sortable>
@@ -254,6 +253,7 @@ Use `:swap="'border-red'"` to enable the swaping of elements, the value is the c
     group="people"
     :allow-sort="false"
     :allow-drop="false"
+    :allow-pull="false"
     :clone="true"
     :swap="'bg-green'"
 >

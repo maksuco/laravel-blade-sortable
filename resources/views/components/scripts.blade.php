@@ -9,7 +9,7 @@
             group: null,
             allowSort: true,
             allowDrop: true,
-            pull: true,
+            allowPull: true,
             swap: false,
 
             wireComponent: null,
@@ -30,7 +30,7 @@
                     group: {
                         name: this.group,
                         put: this.allowDrop,
-                        pull: this.pull
+                        pull: this.allowPull
                     },
                     sort: this.allowSort,
                     filter: '.noDragging',

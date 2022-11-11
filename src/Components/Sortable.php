@@ -26,6 +26,8 @@ class Sortable extends Component
 
     public $allowSort;
 
+    public $allowPull;
+
     public $clone;
     public $swap;
 
@@ -38,6 +40,7 @@ class Sortable extends Component
                                 $group = null,
                                 $allowSort = true,
                                 $allowDrop = true,
+                                $allowPull = true,
                                 $clone = null,
                                 $swap = null)
     {
@@ -50,6 +53,7 @@ class Sortable extends Component
         $this->group = $group;
         $this->allowDrop = $allowDrop;
         $this->allowSort = $allowSort;
+        $this->allowPull = $allowPull;
         $this->clone = $clone;
         $this->swap = $swap;
     }
@@ -67,6 +71,7 @@ class Sortable extends Component
         if($this->clone){
             $this->allowDrop = false;
             $this->allowSort = false;
+            $this->allowPull = true;
         }
 
         return collect()
@@ -79,6 +84,7 @@ class Sortable extends Component
             ->push($hasWireOnSortOrderChangeDirective ? "wireOnSortOrderChange = '$wireOnSortOrderChange'" : null)
             ->push($this->allowSort ? 'allowSort = true' : 'allowSort = false')
             ->push($this->allowDrop ? 'allowDrop = true' : 'allowDrop = false')
+            ->push($this->allowPull ? 'allowPull = true' : 'allowPull = false')
             ->push($this->clone ? "pull = 'clone'" : NULL)
             ->push($this->swap ? "swap = '{$this->swap}'" : NULL)
             ->push('start()')
