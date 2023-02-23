@@ -35,7 +35,7 @@
                     sort: this.allowSort,
                     filter: '.noDragging',
                     //forceFallback: true,
-		            fallbackOnBody: true,
+		            fallbackOnBody: false,
 		            swapThreshold: 0.65,
                     swap: swap,
                     swapClass: this.swap,
