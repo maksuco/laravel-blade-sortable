@@ -263,6 +263,9 @@ Use `:swap="'border-red'"` to enable the swaping of elements, the value is the c
 
 ![disable-sort-drop](https://github.com/asantibanez/laravel-blade-sortable/raw/master/examples/disable-sort-drop.gif)
 
+### Prevent group nesting
+
+Just add something like id="g_{{$item['id']}}" to the main group and on the sub groups class="sortable-group-inside", this will target all groups and change the option to put: false.
 
 ### Changelog
 

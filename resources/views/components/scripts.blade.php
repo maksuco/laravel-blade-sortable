@@ -18,7 +18,6 @@
 
             start() {
                 var parent = document.getElementById('sortableParent');
-                console.log(this.parent);
                 this.sortOrder = this.computeSortOrderFromChildren()
                 var swap = (this.swap != false)? true : false;
 
@@ -39,7 +38,23 @@
 		            swapThreshold: 0.65,
                     swap: swap,
                     swapClass: this.swap,
+                    onChoose: function (evt) {
+                        //console.log('onChoose',evt,evt.item,evt.item.id,evt.parent);
+                        if (evt.item.id.includes("g_")) {
+                            const sortableElements = document.querySelectorAll('.sortable-group-inside');
+                            sortableElements.forEach((element) => {
+                                Sortable.get(element).option('group', { put: false });
+                            });
+                        }
+                    },
                     onSort: evt => {
+                        const itemId = evt.item.id ?? null
+                        const toId = evt?.to?.id
+                        console.log('onSort',evt,itemId,toId);
+                        // if(itemId.includes("group_") && toId.includes("group_")){
+                        //     evt.preventDefault();
+                        //     return false;
+                        // }
 
                         const previousSortOrder = [...this.sortOrder]
                         this.sortOrder = this.computeSortOrderFromChildren()
@@ -51,8 +66,6 @@
                         const to = evt?.to?.dataset?.name
                         const oldIndex = evt?.oldIndex
                         const newIndex = evt?.newIndex
-                        const itemId = evt.item.id ?? null
-                        const toId = evt?.to?.id
 
                         this.$wire.call(
                             this.wireOnSortOrderChange,
@@ -72,6 +85,10 @@
                     },
                     onEnd: function () {
                         if(parent) {parent.classList.remove("sortable-parent")};
+                        const sortableElements = document.querySelectorAll('.sortable-group-inside');
+                        sortableElements.forEach((element) => {
+                            Sortable.get(element).option('group', { put: true });
+                        });
                     }
                 });
             },
